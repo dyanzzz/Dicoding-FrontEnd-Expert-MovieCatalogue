@@ -29,11 +29,11 @@ const Detail = {
 				overview: movie.overview,
 				backdrop_path: movie.backdrop_path,
 				poster_path: movie.poster_path,
-				rating: movie.vote_average,
+				vote_average: movie.vote_average,
 				popularity: movie.popularity,
 				tagline: movie.tagline,
 				release_date: movie.release_date,
-				duration: movie.runtime,
+				runtime: movie.runtime,
 			},
 		});
 

@@ -18,8 +18,6 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
 	//console.log("##### Fetch Service : %o", event.request);
 
-	event.respondWith(fetch(event.request));
-
 	event.respondWith(CacheHelper.revalidateCache(event.request));
 	
 });

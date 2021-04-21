@@ -1,3 +1,6 @@
+import NotificationHelper from "./notification-helper";
+import CONFIG from '../globals/config';
+
 const WebSocketInitiator = {
 	init(url) {
 		const webSocket = new WebSocket(url);
@@ -5,7 +8,17 @@ const WebSocketInitiator = {
 	},
 
 	_onMessageHandler(message) {
-		console.log("##### Websocket => %s", message.data);
+		console.log("##### Websocket => %o", JSON.parse(message.data));
+		
+		// Implementation Notification using websocket
+		const movie = JSON.parse(message.data);
+    NotificationHelper.sendNotification({
+			title: `${movie.title} is on cinema! ${movie.poster_path}`,
+			options: {
+				body: movie.overview,
+        icon: CONFIG.BASE_IMAGE_URL + movie.poster_path,
+			},
+		});
 	},
 };
 

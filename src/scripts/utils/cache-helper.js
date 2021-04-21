@@ -9,8 +9,8 @@ const CacheHelper = {
 	async deleteOldCache() {
 		const cacheName = await caches.keys();
 		cacheName
-		.filter((name) => name !== CONFIG.CACHE_NAME)
-		.map((filteredName) => caches.delete(filteredName));
+			.filter((name) => name !== CONFIG.CACHE_NAME)
+			.map((filteredName) => caches.delete(filteredName));
 	},
 
 	async revalidateCache(request) {
