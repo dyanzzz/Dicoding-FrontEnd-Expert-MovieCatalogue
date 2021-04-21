@@ -16,7 +16,7 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-	console.log(event.request);
+	//console.log("##### Fetch Service : %o", event.request);
 
 	event.respondWith(fetch(event.request));
 

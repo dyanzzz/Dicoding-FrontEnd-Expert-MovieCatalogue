@@ -201,3 +201,21 @@ footer p a {
   color: #db0000;
   text-decoration: none;
 }
+
+/* favorite */
+.like {
+	font-size: 18px;
+	position: fixed;
+	display: flex;
+	bottom: 16px;
+	right: 16px;
+	background-color: #db0000;
+	color: #fff;
+	border: 0;
+	border-radius: 50%;
+	width: 55px;
+	height: 55px;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+}

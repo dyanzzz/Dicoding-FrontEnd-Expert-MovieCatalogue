@@ -19,4 +19,3 @@ window.addEventListener('load', () => {
 	swRegister();
 })
 
-console.log('Hello coders!!!');
