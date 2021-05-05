@@ -11,14 +11,31 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
 
 const FavoriteMovieIdb = {
 	async getMovie(id) {
+		/*
+    * validasi jika id tidak ada
+    */
+    if (!id) {
+      return;
+    }
+
 		return (await dbPromise).get(OBJECT_STORE_NAME, id);
 	},
+
 	async getAllMovies() {
 		return (await dbPromise).getAll(OBJECT_STORE_NAME);
 	},
+	
 	async putMovie(movie) {
+		/*
+    * validasi jika id tidak ada
+    */
+    if (!movie.hasOwnProperty('id')) {
+      return;
+    }
+		
 		return (await dbPromise).put(OBJECT_STORE_NAME, movie);
 	},
+	
 	async deleteMovie(id) {
 		return (await dbPromise).delete(OBJECT_STORE_NAME, id);
 	},
