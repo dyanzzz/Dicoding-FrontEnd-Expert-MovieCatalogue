@@ -71,6 +71,9 @@ describe('Searching movies', () => {
         id: 1, title: 'film satu'
       }]);
 
+      expect(document.querySelectorAll('.movie-item').length)
+        .toEqual(1);
+
       // kemudian tes film diatas ditampilkan
       presenter._showFoundMovies([
         {
@@ -81,7 +84,7 @@ describe('Searching movies', () => {
         }
       ]);
 
-      const foundMovies = document.querySelectorAll('.movie');
+      const foundMovies = document.querySelectorAll('.movie-item');
 
       expect(foundMovies.length).toEqual(2);
     });
@@ -117,7 +120,7 @@ describe('Searching movies', () => {
 */
 
     it('should show - when the movie returned does not contain a title', (done) => {
-      document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
+      document.getElementById('movies').addEventListener('movies:updated', () => {
         const movieTitles = document.querySelectorAll('.movie__title');
         expect(movieTitles.item(0).textContent).toEqual('-');
      
@@ -132,8 +135,8 @@ describe('Searching movies', () => {
     });
 
     it('should show the movies found by Favorite Movies', (done) => {
-      document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
-        const movie = document.querySelectorAll('.movie');
+      document.getElementById('movies').addEventListener('movies:updated', () => {
+        const movie = document.querySelectorAll('.movie-item');
         expect(movie.length).toEqual(3);
         done();
       });
@@ -154,8 +157,7 @@ describe('Searching movies', () => {
     });
 
     it('should show the name of the movies found by Favorite Movies', (done) => {
-      document.getElementById('movie-search-container')
-        .addEventListener('movies:searched:updated', () => {
+      document.getElementById('movies').addEventListener('movies:updated', () => {
           const movieTitles = document.querySelectorAll('.movie__title');
           expect(movieTitles.item(0).textContent)
             .toEqual('film abc');
@@ -215,8 +217,8 @@ describe('Searching movies', () => {
 
   describe('when no favorite movies could be found', () => {
     it('should show the empty message', (done) => {
-      document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
-        expect(document.querySelectorAll('.movies__not__found').length).toEqual(1);
+      document.getElementById('movies').addEventListener('movies:updated', () => {
+        expect(document.querySelectorAll('.movie-item__not__found').length).toEqual(1);
         done();
       });
 
@@ -226,8 +228,8 @@ describe('Searching movies', () => {
     });
 
     it('should not show to any movie', (done) => {
-      document.getElementById('movie-search-container').addEventListener('movies:searched:updated', () => {
-        expect(document.querySelectorAll('.movie').length).toEqual(0);
+      document.getElementById('movies').addEventListener('movies:updated', () => {
+        expect(document.querySelectorAll('.movie-item').length).toEqual(0);
         done();
       });
 
