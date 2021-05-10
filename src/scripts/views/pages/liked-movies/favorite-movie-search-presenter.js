@@ -1,9 +1,10 @@
 class FavoriteMovieSearchPresenter {
-  constructor({ favoriteMovies, view }) {
+  constructor({ view, favoriteMovies }) {
     // call abstraction to simple read
     this._view = view;
-    this._listenToSearchRequestByUser();
     this._favoriteMovies = favoriteMovies;
+
+    this._listenToSearchRequestByUser();
   }
 
   // create abstraction to simple read

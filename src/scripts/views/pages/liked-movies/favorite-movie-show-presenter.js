@@ -3,10 +3,10 @@ class FavoriteMovieShowPresenter {
     this._view = view;
     this._favoriteMovies = favoriteMovies;
 
-    this._showFavoriteMovies();
+    this._showFavoriteMovie();
   }
 
-  async _showFavoriteMovies() {
+  async _showFavoriteMovie() {
     const movies = await this._favoriteMovies.getAllMovies();
     this._displayMovies(movies);
   }
